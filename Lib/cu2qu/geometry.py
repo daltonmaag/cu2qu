@@ -23,7 +23,7 @@ class Point:
     """
 
     def __init__(self, p):
-        self.p = map(float, p)
+        self.p = tuple(float(i) for i in p)
 
     def __getitem__(self, key):
         return self.p[key]
@@ -108,7 +108,7 @@ def cubic_approx_spline(p, n):
     spline = [p[0]]
     ts = [(float(i) / n) for i in range(1, n)]
     segments = [
-        map(Point, segment)
+        [Point(pt) for pt in segment]
         for segment in bezierTools.splitCubicAtT(p[0], p[1], p[2], p[3], *ts)]
     for i in range(len(segments)):
         segment = cubic_approx(segments[i], float(i) / (n - 1))
