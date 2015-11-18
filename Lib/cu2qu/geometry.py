@@ -123,7 +123,7 @@ def curve_spline_dist(bezier, spline):
     TOTAL_STEPS = 20
     error = 0
     n = len(spline) - 2
-    steps = TOTAL_STEPS / n
+    steps = TOTAL_STEPS // n
     for i in range(1, n + 1):
         segment = [
             spline[0] if i == 1 else segment[2],
